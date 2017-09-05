@@ -5,6 +5,7 @@ const morgan = require('morgan')
 const app = express()
 const router = require('./router')
 const mongoose = require('mongoose')
+const cors = require('cors')
 
 // Use native Node promises
 mongoose.Promise = global.Promise
@@ -17,6 +18,7 @@ mongoose.connect('mongodb://localhost/auth', { useMongoClient: true })
 
 // App Setup
 app.use(morgan('combined'))
+app.use(cors()) // cors middleware
 app.use(bodyParser.json({ type: '*/*' }))
 router(app)
 

@@ -9,7 +9,7 @@ const requireSignin = passport.authenticate('local', { session: false })
 module.exports = function (app) {
   // only run the function if it passes requireAuth
   app.get('/', requireAuth, function (req, res) {
-    res.send({ hi: 'there' })
+    res.send({ message: 'Super secret code is ABC123' })
   })
   // requireSignin behaves as a middleware
   app.post('/signin', requireSignin, Authentication.signin)
